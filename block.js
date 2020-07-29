@@ -9,7 +9,7 @@ class Block {
     }
 
     toString() {
-        return `Block - 
+        return `Block -
             Timestamp: ${this.timestamp}
             Last Hash: ${this.lastHash.substring(0, 10)}
             Hash     : ${this.hash.substring(0, 10)}
