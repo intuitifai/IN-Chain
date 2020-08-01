@@ -29,12 +29,26 @@ describe('Blockchain', () => {
         bc2.chain[0].data = 'Bad data';
 
         expect(bc2.isValidChain(bc2.chain)).toBe(false);
-    })
+    });
 
     it('invalidates a corrupt chain', () => {
         bc2.addBlock('foo');
         bc2.chain[1].data = 'Not foo';
 
         expect(bc.isValidChain(bc2.chain)).toBe(false);
-    })
+    });
+
+    it('replaces the chain with the valid chain', () => {
+        bc2.addBlock('foo2');
+        bc.replaceChain(bc2.chain);
+
+        expect(bc.chain).toEqual(bc2.chain);
+    });
+
+    it('does not replace the chain with less or equal to its length', () => {
+        bc.addBlock('foo');
+        bc.replaceChain(bc2.chain);
+
+        expect(bc.chain).not.toEqual(bc2.chain)
+    });
 });
