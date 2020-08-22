@@ -21,7 +21,7 @@ class P2pServer {
         peers.forEach(peer => {
             const socket = new Websocket(peer);
 
-            socket.on('Open', () => this.connectSocket(socket));
+            socket.on('open', () => this.connectSocket(socket));
         });
     }
 
