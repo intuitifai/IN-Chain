@@ -30,6 +30,8 @@ class P2pServer {
         console.log('Socket Connected!!');
 
         this.messageHandler(socket);
+
+        socket.send(JSON.stringify(this.blockchain.chain));
     }
 
     messageHandler(socket) {
