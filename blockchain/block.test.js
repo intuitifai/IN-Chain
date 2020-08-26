@@ -21,4 +21,8 @@ describe('Block', () => {
     it('generates a hash that matches that difficulty', () => {
         expect(block.hash.substring(0, DIFFICULTY)).toEqual('0'.repeat(DIFFICULTY))
     });
+
+    it('lowers the difficulty for slowly mined blocks', () => {
+        expect(Block.adjustDifficulty(block, block.timestamp+3600000)).toEqual(block.difficulty-1);
+    });
 });
